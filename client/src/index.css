@@ -3,40 +3,40 @@
 /* Class-based dark mode — toggle .dark on <html> */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ─── Color tokens (placeholders — fill in during design phase) ─────────────
+/* ─── Color tokens ───────────────────────────────────────────────────────────
    These generate Tailwind utilities: bg-light-base, text-dark-primary, etc.
    Never hardcode hex values in JSX — always use the token class names.
    ─────────────────────────────────────────────────────────────────────────── */
 @theme {
-  /* Light theme */
-  --color-light-base:        #f8fafc;
-  --color-light-surface:     #ffffff;
-  --color-light-surface-alt: #f1f5f9;
-  --color-light-border:      #e2e8f0;
-  --color-light-primary:     #0f172a;
-  --color-light-secondary:   #475569;
-  --color-light-muted:       #94a3b8;
-  --color-light-accent:      #PLACEHOLDER;
-  --color-light-accent-hover:#PLACEHOLDER;
-  --color-light-success:     #22c55e;
-  --color-light-warning:     #f59e0b;
-  --color-light-danger:      #ef4444;
-  --color-light-sidebar:     #ffffff;
+  /* ── Light theme ── */
+  --color-light-base:         #f8fafc;  /* slate-50  — page background        */
+  --color-light-surface:      #ffffff;  /* white     — card background         */
+  --color-light-surface-alt:  #f1f5f9;  /* slate-100 — hover / subtle bg       */
+  --color-light-border:       #e2e8f0;  /* slate-200 — borders, dividers       */
+  --color-light-primary:      #0f172a;  /* slate-900 — headings, key values    */
+  --color-light-secondary:    #475569;  /* slate-600 — labels, descriptions    */
+  --color-light-muted:        #94a3b8;  /* slate-400 — timestamps, disabled    */
+  --color-light-accent:       #f59e0b;  /* amber-500 — buttons, active nav     */
+  --color-light-accent-hover: #d97706;  /* amber-600 — hover on accent         */
+  --color-light-success:      #16a34a;  /* green-600 — online, healthy         */
+  --color-light-warning:      #ea580c;  /* orange-600 — attention required     */
+  --color-light-danger:       #dc2626;  /* red-600   — faults, errors          */
+  --color-light-sidebar:      #ffffff;  /* white     — sidebar background      */
 
-  /* Dark theme */
-  --color-dark-base:         #0f172a;
-  --color-dark-surface:      #1e293b;
-  --color-dark-surface-alt:  #334155;
-  --color-dark-border:       #334155;
-  --color-dark-primary:      #f8fafc;
-  --color-dark-secondary:    #94a3b8;
-  --color-dark-muted:        #475569;
-  --color-dark-accent:       #PLACEHOLDER;
-  --color-dark-accent-hover: #PLACEHOLDER;
-  --color-dark-success:      #22c55e;
-  --color-dark-warning:      #f59e0b;
-  --color-dark-danger:       #ef4444;
-  --color-dark-sidebar:      #1e293b;
+  /* ── Dark theme ── */
+  --color-dark-base:          #09090b;  /* zinc-950  — page background         */
+  --color-dark-surface:       #18181b;  /* zinc-900  — card background         */
+  --color-dark-surface-alt:   #27272a;  /* zinc-800  — hover / subtle bg       */
+  --color-dark-border:        #27272a;  /* zinc-800  — borders, dividers       */
+  --color-dark-primary:       #fafafa;  /* zinc-50   — headings, key values    */
+  --color-dark-secondary:     #a1a1aa;  /* zinc-400  — labels, descriptions    */
+  --color-dark-muted:         #52525b;  /* zinc-600  — timestamps, disabled    */
+  --color-dark-accent:        #fbbf24;  /* amber-400 — buttons, active nav     */
+  --color-dark-accent-hover:  #f59e0b;  /* amber-500 — hover on accent         */
+  --color-dark-success:       #4ade80;  /* green-400 — online, healthy         */
+  --color-dark-warning:       #fb923c;  /* orange-400 — attention required     */
+  --color-dark-danger:        #f87171;  /* red-400   — faults, errors          */
+  --color-dark-sidebar:       #18181b;  /* zinc-900  — sidebar background      */
 
   --font-sans: 'Inter', system-ui, sans-serif;
 }
