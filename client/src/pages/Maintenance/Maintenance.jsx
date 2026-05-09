@@ -1,5 +1,11 @@
-import Card from '../../components/ui/Card'
-import { Wrench, CalendarCheck, AlertTriangle, ClipboardList } from 'lucide-react'
+import SystemHealthCard    from './components/SystemHealthCard'
+import PanelConditionCard  from './components/PanelConditionCard'
+import InverterStatusCard  from './components/InverterStatusCard'
+import BatteryHealthCard   from './components/BatteryHealthCard'
+import ActiveAlertsCard    from './components/ActiveAlertsCard'
+import ScheduledServiceCard from './components/ScheduledServiceCard'
+import ServiceHistoryCard  from './components/ServiceHistoryCard'
+import WarrantyStatusCard  from './components/WarrantyStatusCard'
 
 export default function Maintenance() {
   return (
@@ -8,18 +14,14 @@ export default function Maintenance() {
         Maintenance
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        <Card title="Service Status" icon={Wrench}>
-          <p className="text-sm text-light-muted dark:text-dark-muted">No pending service.</p>
-        </Card>
-        <Card title="Next Scheduled" icon={CalendarCheck}>
-          <p className="text-sm text-light-muted dark:text-dark-muted">Not scheduled.</p>
-        </Card>
-        <Card title="Active Alerts" icon={AlertTriangle}>
-          <p className="text-sm text-light-muted dark:text-dark-muted">No active alerts.</p>
-        </Card>
-        <Card title="Service History" icon={ClipboardList}>
-          <p className="text-sm text-light-muted dark:text-dark-muted">No records found.</p>
-        </Card>
+        <SystemHealthCard />
+        <PanelConditionCard />
+        <InverterStatusCard />
+        <BatteryHealthCard />
+        <ActiveAlertsCard />
+        <ScheduledServiceCard />
+        <ServiceHistoryCard />
+        <WarrantyStatusCard />
       </div>
     </div>
   )
