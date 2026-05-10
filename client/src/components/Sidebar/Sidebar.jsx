@@ -28,7 +28,7 @@ export default function Sidebar() {
       <button
         onClick={() => setExpanded(prev => !prev)}
         aria-label="Toggle sidebar"
-        className="flex items-center gap-3 h-14 px-4 shrink-0 hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt transition-colors"
+        className={`flex items-center gap-3 h-14 shrink-0 hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt transition-colors ${expanded ? 'px-4' : 'justify-center'}`}
       >
         <span className="text-light-accent dark:text-dark-accent font-bold text-xl shrink-0 w-5 text-center">
           H
@@ -50,7 +50,7 @@ export default function Sidebar() {
             key={to}
             to={to}
             className={({ isActive }) =>
-              `flex items-center gap-3 rounded-lg px-2 py-2 transition-colors ${
+              `flex items-center gap-3 rounded-lg py-2 transition-colors ${expanded ? 'px-2' : 'justify-center'} ${
                 isActive
                   ? 'bg-light-accent dark:bg-dark-accent text-white'
                   : 'text-light-secondary dark:text-dark-secondary hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt'
@@ -72,7 +72,7 @@ export default function Sidebar() {
         <div className="mx-1 mb-2 border-t border-light-border dark:border-dark-border" />
         <button
           onClick={toggleTheme}
-          className="flex items-center gap-3 w-full rounded-lg px-2 py-2 text-light-secondary dark:text-dark-secondary hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt transition-colors"
+          className={`flex items-center gap-3 w-full rounded-lg py-2 text-light-secondary dark:text-dark-secondary hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt transition-colors ${expanded ? 'px-2' : 'justify-center'}`}
         >
           {isDark
             ? <Sun size={20} className="shrink-0" />
