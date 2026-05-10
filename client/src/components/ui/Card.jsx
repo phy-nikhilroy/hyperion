@@ -1,7 +1,7 @@
 export default function Card({ title, icon: Icon, children, className = '' }) {
   return (
     <div
-      className={`border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-7 shadow-sm ${className}`}
+      className={`border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-8 shadow-sm ${className}`}
     >
       {title && (
         <div className="flex items-center justify-between mb-4">
