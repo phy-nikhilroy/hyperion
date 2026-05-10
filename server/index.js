@@ -1,10 +1,12 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import { fileURLToPath } from 'url'
+import { resolve, dirname } from 'path'
 import connectDB from './utils/db.js'
 import authRoutes from './routes/authRoutes.js'
 
-dotenv.config()
+dotenv.config({ path: resolve(dirname(fileURLToPath(import.meta.url)), '.env') })
 connectDB()
 
 const app = express()
