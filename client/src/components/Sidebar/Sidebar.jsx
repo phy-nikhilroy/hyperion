@@ -34,7 +34,7 @@ export default function Sidebar() {
           H
         </span>
         <span
-          className={`font-semibold text-light-primary dark:text-dark-primary whitespace-nowrap transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          className={`font-semibold text-light-primary dark:text-dark-primary whitespace-nowrap transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0 pointer-events-none w-0 overflow-hidden'}`}
         >
           Hyperion
         </span>
@@ -59,7 +59,7 @@ export default function Sidebar() {
           >
             <Icon size={20} className="shrink-0" />
             <span
-              className={`text-sm font-medium whitespace-nowrap transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              className={`text-sm font-medium whitespace-nowrap transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0 pointer-events-none w-0 overflow-hidden'}`}
             >
               {label}
             </span>
@@ -79,7 +79,7 @@ export default function Sidebar() {
             : <Moon size={20} className="shrink-0" />
           }
           <span
-            className={`text-sm font-medium whitespace-nowrap transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`text-sm font-medium whitespace-nowrap transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0 pointer-events-none w-0 overflow-hidden'}`}
           >
             {isDark ? 'Light Mode' : 'Dark Mode'}
           </span>
