@@ -1,32 +1,27 @@
-import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, Wrench, BarChart3, Settings, Sun, Moon } from 'lucide-react'
-import { useTheme } from '../../context/ThemeContext'
+import { LayoutDashboard, Wrench, BarChart3, Settings } from 'lucide-react'
 
 const navItems = [
-  { to: '/dashboard',    icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/maintenance',  icon: Wrench,           label: 'Maintenance' },
-  { to: '/reports',      icon: BarChart3,        label: 'Reports' },
-  { to: '/settings',     icon: Settings,         label: 'System Settings' },
+  { to: '/dashboard',   icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/maintenance', icon: Wrench,           label: 'Maintenance' },
+  { to: '/reports',     icon: BarChart3,        label: 'Reports' },
+  { to: '/settings',    icon: Settings,         label: 'System Settings' },
 ]
 
-export default function Sidebar() {
-  const [expanded, setExpanded] = useState(false)
-  const { isDark, toggleTheme } = useTheme()
-
+export default function Sidebar({ expanded, onToggle }) {
   return (
     <aside
       className={`
-        flex flex-col h-screen sticky top-0 shrink-0 overflow-hidden
-        bg-light-sidebar dark:bg-dark-sidebar
-        border-r border-light-border dark:border-dark-border
-        transition-all duration-300 ease-in-out
-        ${expanded ? 'w-56' : 'w-16'}
-      `}
+    flex flex-col h-full overflow-hidden
+    bg-light-sidebar dark:bg-dark-sidebar
+    border-r border-light-border dark:border-dark-border
+    transition-all duration-300 ease-in-out
+    ${expanded ? 'w-56' : 'w-16'}
+  `}
     >
       {/* Logo / toggle */}
       <button
-        onClick={() => setExpanded(prev => !prev)}
+        onClick={onToggle}
         aria-label="Toggle sidebar"
         className="flex items-center gap-3 h-14 px-4 shrink-0 hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt transition-colors"
       >
@@ -66,25 +61,6 @@ export default function Sidebar() {
           </NavLink>
         ))}
       </nav>
-
-      {/* Theme toggle */}
-      <div className="px-2 pb-4">
-        <div className="mx-1 mb-2 border-t border-light-border dark:border-dark-border" />
-        <button
-          onClick={toggleTheme}
-          className="flex items-center gap-3 w-full rounded-lg px-2 py-2 text-light-secondary dark:text-dark-secondary hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt transition-colors"
-        >
-          {isDark
-            ? <Sun size={20} className="shrink-0" />
-            : <Moon size={20} className="shrink-0" />
-          }
-          <span
-            className={`text-sm font-medium whitespace-nowrap transition-opacity duration-200 ${expanded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          >
-            {isDark ? 'Light Mode' : 'Dark Mode'}
-          </span>
-        </button>
-      </div>
     </aside>
   )
 }
