@@ -50,8 +50,7 @@ hyperion/
 | Login | All | Complete |
 | Dashboard | Nikhil | Complete |
 | Maintenance | Nikhil | In progress (static UI done) |
-| Reports | Vikash | Planned |
-| System Settings | Sweta | Planned |
+| System Settings | Sweta (potential) | Planned |
 
 ---
 

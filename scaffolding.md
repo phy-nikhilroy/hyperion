@@ -79,8 +79,7 @@ Props:
 | Login | `src/pages/Login/Login.jsx` | — | Complete |
 | Dashboard | `src/pages/Dashboard/Dashboard.jsx` | Nikhil | Complete |
 | **Maintenance** | `src/pages/Maintenance/Maintenance.jsx` | Nikhil | In progress |
-| **Reports** | `src/pages/Reports/Reports.jsx` | Vikash | Planned |
-| **System Settings** | `src/pages/SystemSettings/SystemSettings.jsx` | Sweta | Planned |
+| **System Settings** | `src/pages/SystemSettings/SystemSettings.jsx` | Sweta (potential) | Planned |
 
 #### Routing
 Routes are already declared in `App.jsx`. You do not need to add a new route for your page — it already exists.
@@ -204,13 +203,12 @@ The Vite dev server automatically proxies all `/api` requests to the backend —
 git checkout dev
 git pull origin dev
 git checkout -b feature/<your-name>/<short-description>
-# e.g. feature/vikash/reports-monthly-chart
+# e.g. feature/nikhil/maintenance-filter-panel
 ```
 
 Open your page file:
 - Nikhil → `client/src/pages/Maintenance/Maintenance.jsx`
-- Vikash → `client/src/pages/Reports/Reports.jsx`
-- Sweta → `client/src/pages/SystemSettings/SystemSettings.jsx`
+- Sweta (potential) → `client/src/pages/SystemSettings/SystemSettings.jsx`
 
 The shell is there — replace the placeholder cards with the real UI. Use the `Card` component and the color token classes throughout.
 
