@@ -49,3 +49,6 @@ coverage/
 .cache/
 tmp/
 HANDOFF.md
+
+# ─── Sensor ─────────────────────────────────────────────────────────────────────
+sensor/sensor.env
