@@ -1,6 +1,6 @@
 # Hyperion — Collaboration Guidelines
 
-This document defines how the three of us (Nikhil, Vikash, Sweta) work together on this repository. Read it fully before making your first commit.
+This document defines how the team works together on this repository. Read it fully before making your first commit.
 
 ---
 
@@ -12,7 +12,6 @@ We use a simple two-tier branching model:
 main        ← production-ready code only. Never commit here directly.
 dev         ← integration branch. All feature branches merge into dev.
 └── feature/nikhil/maintenance-...
-└── feature/vikash/reports-...
 └── feature/sweta/settings-...
 └── fix/<short-description>
 └── chore/<short-description>
@@ -141,9 +140,8 @@ git push --force-with-lease origin feature/<your-name>/<description>
 
 | Page            | Owner  | Branch prefix                     |
 |-----------------|--------|-----------------------------------|
-| Maintenance     | Nikhil | `feature/nikhil/maintenance-...`  |
-| Reports         | Vikash | `feature/vikash/reports-...`      |
-| System Settings | Sweta  | `feature/sweta/settings-...`      |
+| Maintenance     | Nikhil          | `feature/nikhil/maintenance-...`  |
+| System Settings | Sweta (potential) | `feature/sweta/settings-...`    |
 | Shared/Common   | All    | `feature/<name>/shared-...`       |
 
 Work within your page. If you need to touch a shared file (e.g. `tailwind.config.js`, `App.jsx`, routes), flag it to the group first.
