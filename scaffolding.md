@@ -72,16 +72,15 @@ Props:
 | `children` | ReactNode | Yes | Card body content |
 | `className` | string | No | Extra Tailwind classes on the outer div |
 
-#### Pages (shells — yours to build out)
-Each page already exists as a minimal shell with a title and a placeholder card grid. Your job is to replace the placeholder cards with real content.
+#### Pages
 
-| Page | File | Owner |
-|------|------|-------|
-| Login | `src/pages/Login/Login.jsx` | — (complete) |
-| Dashboard | `src/pages/Dashboard/Dashboard.jsx` | TBD |
-| **Maintenance** | `src/pages/Maintenance/Maintenance.jsx` | Nikhil |
-| **Reports** | `src/pages/Reports/Reports.jsx` | Vikash |
-| **System Settings** | `src/pages/SystemSettings/SystemSettings.jsx` | Sweta |
+| Page | File | Owner | Status |
+|------|------|-------|--------|
+| Login | `src/pages/Login/Login.jsx` | — | Complete |
+| Dashboard | `src/pages/Dashboard/Dashboard.jsx` | Nikhil | Complete |
+| **Maintenance** | `src/pages/Maintenance/Maintenance.jsx` | Nikhil | In progress |
+| **Reports** | `src/pages/Reports/Reports.jsx` | Vikash | Planned |
+| **System Settings** | `src/pages/SystemSettings/SystemSettings.jsx` | Sweta | Planned |
 
 #### Routing
 Routes are already declared in `App.jsx`. You do not need to add a new route for your page — it already exists.
@@ -101,12 +100,17 @@ All routes under `/` are protected — unauthenticated users are redirected to `
 ### Server (`/server`)
 
 #### Entry Point
-`server/index.js` — starts the Express server, connects to MongoDB, mounts routes.
+`server/index.js` — starts the Express server, connects to MongoDB and Redis, starts the cron job, mounts routes.
 
 ```
-GET  /api/health       → { status: 'ok' }
+GET  /api/health                  → { status: 'ok' }
 POST /api/auth/register
 POST /api/auth/login
+POST /api/ingest                  → telemetry ingest (x-ingest-secret header, no JWT)
+GET  /api/telemetry/live          → current sensor reading from Redis (JWT required)
+GET  /api/telemetry/today         → today's accumulation from Redis (JWT required)
+GET  /api/telemetry/history?days= → MongoDB daily records, Redis-cached (JWT required)
+GET  /api/device                  → device info, Redis-cached 1hr (JWT required)
 ```
 
 #### Auth Flow (already complete)
@@ -167,18 +171,19 @@ For a full reference on layout, spacing, typography, card anatomy, buttons, and 
 git clone https://github.com/<org>/hyperion.git
 cd hyperion
 
-# 2. Install client dependencies
+# 2. Install dependencies
 cd client && npm install
-
-# 3. Install server dependencies
 cd ../server && npm install
 
-# 4. Set up environment variables
+# 3. Set up environment variables
 cp server/.env.example server/.env
-# Open server/.env and fill in MONGO_URI and JWT_SECRET
+# Fill in MONGO_URI, JWT_SECRET, INGEST_SECRET, REDIS_URL
+
+# 4. Seed the database (first time only)
+cd server && node scripts/seed.js
 
 # 5. Run the dev servers (two terminals)
-# Terminal 1 — backend
+# Terminal 1 — backend (also starts Redis cron job)
 cd server && npm run dev
 
 # Terminal 2 — frontend

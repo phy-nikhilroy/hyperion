@@ -124,7 +124,7 @@ Cards should never stretch to fill the full page width without a defined `max-w`
 All cards share the same base style. Do not deviate from this without a design discussion.
 
 ```
-rounded-2xl border p-5 shadow-sm
+border p-5 shadow-sm
 bg-light-surface dark:bg-dark-surface
 border-light-border dark:border-dark-border
 ```
