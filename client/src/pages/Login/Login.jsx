@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 
+const DEV_USER = { id: 'dev-001', name: 'Dev User', email: 'abc@hyperion.dev' }
+const DEV_TOKEN = 'dev-token'
+
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
@@ -28,6 +31,11 @@ export default function Login() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleDevLogin = () => {
+    login(DEV_USER, DEV_TOKEN)
+    navigate('/maintenance')
   }
 
   return (
@@ -85,6 +93,23 @@ export default function Login() {
           >
             {loading ? 'Signing in…' : 'Sign in'}
           </button>
+
+          {import.meta.env.DEV && (
+            <>
+              <div className="flex items-center gap-2">
+                <div className="flex-1 border-t border-light-border dark:border-dark-border" />
+                <span className="text-xs text-light-muted dark:text-dark-muted">dev only</span>
+                <div className="flex-1 border-t border-light-border dark:border-dark-border" />
+              </div>
+              <button
+                type="button"
+                onClick={handleDevLogin}
+                className="w-full border border-light-border dark:border-dark-border text-light-secondary dark:text-dark-secondary rounded-lg px-4 py-2 text-sm font-medium hover:bg-light-surface-alt dark:hover:bg-dark-surface-alt transition-colors"
+              >
+                Quick Dev Login
+              </button>
+            </>
+          )}
         </form>
       </div>
     </div>

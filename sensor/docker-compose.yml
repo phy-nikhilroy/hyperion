@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  sensor:
+    build: .
+    restart: unless-stopped
+    env_file: sensor.env
+    volumes:
+      - sensor_logs:/var/log/hyperion
+
+volumes:
+  sensor_logs:

@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - internal
+
+  server:
+    build: ./server
+    restart: unless-stopped
+    env_file: ./server/.env
+    environment:
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - redis
+    networks:
+      - internal
+
+  client:
+    build: ./client
+    restart: unless-stopped
+    depends_on:
+      - server
+    networks:
+      - internal
+      - web-network
+
+networks:
+  internal:
+    driver: bridge
+  web-network:
+    external: true
+
+volumes:
+  redis_data:

@@ -1,29 +1,52 @@
-import Card from '../../components/ui/Card'
-import { Sun, Zap, Battery, Leaf } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
+import { apiFetch } from '../../services/api'
+import SensorStatusCard from './components/SensorStatusCard'
+import LiveOutputCard   from './components/LiveOutputCard'
+import MonthTotalCard   from './components/MonthTotalCard'
+import WarrantyCard     from './components/WarrantyCard'
+import HistoryChart     from './components/HistoryChart'
+
+const LIVE_POLL_INTERVAL = 10_000 // 10s
 
 export default function Dashboard() {
+  const [live,    setLive]    = useState(null)
+  const [history, setHistory] = useState(null)
+  const [device,  setDevice]  = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  const fetchLive = useCallback(async () => {
+    const res = await apiFetch('/api/telemetry/live')
+    if (res?.ok) setLive(await res.json())
+  }, [])
+
+  useEffect(() => {
+    async function init() {
+      setLoading(true)
+      await Promise.all([
+        fetchLive(),
+        apiFetch('/api/telemetry/history?days=90').then(r => r?.json()).then(d => d && setHistory(d.records)),
+        apiFetch('/api/device').then(r => r?.json()).then(d => d && setDevice(d)),
+      ])
+      setLoading(false)
+    }
+    init()
+
+    const poll = setInterval(fetchLive, LIVE_POLL_INTERVAL)
+    return () => clearInterval(poll)
+  }, [fetchLive])
+
   return (
-    <div>
-      <h1 className="text-2xl font-semibold text-light-primary dark:text-dark-primary mb-6">
+    <div className="flex flex-col gap-6 pb-8">
+      <h1 className="text-2xl font-semibold text-light-primary dark:text-dark-primary">
         Dashboard
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        <Card title="Solar Output" icon={Sun}>
-          <p className="text-3xl font-bold text-light-primary dark:text-dark-primary">— kW</p>
-          <p className="text-sm text-light-muted dark:text-dark-muted mt-1">Current output</p>
-        </Card>
-        <Card title="Energy Today" icon={Zap}>
-          <p className="text-3xl font-bold text-light-primary dark:text-dark-primary">— kWh</p>
-          <p className="text-sm text-light-muted dark:text-dark-muted mt-1">Generated today</p>
-        </Card>
-        <Card title="Battery" icon={Battery}>
-          <p className="text-3xl font-bold text-light-primary dark:text-dark-primary">— %</p>
-          <p className="text-sm text-light-muted dark:text-dark-muted mt-1">Storage level</p>
-        </Card>
-        <Card title="CO₂ Saved" icon={Leaf}>
-          <p className="text-3xl font-bold text-light-primary dark:text-dark-primary">— kg</p>
-          <p className="text-sm text-light-muted dark:text-dark-muted mt-1">This month</p>
-        </Card>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <SensorStatusCard live={live}    loading={loading} />
+        <LiveOutputCard   live={live}    loading={loading} />
+        <MonthTotalCard   history={history} loading={loading} />
+        <WarrantyCard     device={device}   loading={loading} />
+        <HistoryChart     history={history} loading={loading} />
       </div>
     </div>
   )

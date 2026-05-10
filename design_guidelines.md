@@ -16,43 +16,43 @@ All color tokens below must have a value defined for **both** themes.
 
 ## 2. Color Palette
 
-> These are placeholders. Final colors will be decided during the design phase and filled in here before implementation begins. Do not hardcode hex values in components — always use the Tailwind token names defined in `tailwind.config.js`.
+The palette follows a **Solar / Energy** theme — warm amber accents against clean neutrals in light mode, and against a near-black zinc base in dark mode. Do not hardcode hex values in components — always use the Tailwind token class names.
 
 ### 2.1 Light Mode
 
-| Token Name              | Tailwind Key              | Placeholder | Usage                                      |
-|-------------------------|---------------------------|-------------|--------------------------------------------|
-| `color-bg-base`         | `bg-light-base`           | `#PLACEHOLDER` | Page background                          |
-| `color-bg-surface`      | `bg-light-surface`        | `#PLACEHOLDER` | Card background                          |
-| `color-bg-surface-alt`  | `bg-light-surface-alt`    | `#PLACEHOLDER` | Alternate/hover card background          |
-| `color-border`          | `border-light-border`     | `#PLACEHOLDER` | Card borders, dividers                   |
-| `color-text-primary`    | `text-light-primary`      | `#PLACEHOLDER` | Headings, key values                     |
-| `color-text-secondary`  | `text-light-secondary`    | `#PLACEHOLDER` | Labels, descriptions, meta info          |
-| `color-text-muted`      | `text-light-muted`        | `#PLACEHOLDER` | Timestamps, disabled states              |
-| `color-accent`          | `bg-light-accent`         | `#PLACEHOLDER` | Primary buttons, active nav items, highlights |
-| `color-accent-hover`    | `bg-light-accent-hover`   | `#PLACEHOLDER` | Hover state for accent elements          |
-| `color-success`         | `text-light-success`      | `#PLACEHOLDER` | Online status, healthy readings          |
-| `color-warning`         | `text-light-warning`      | `#PLACEHOLDER` | Low battery, maintenance due             |
-| `color-danger`          | `text-light-danger`       | `#PLACEHOLDER` | Faults, errors, critical alerts          |
-| `color-sidebar-bg`      | `bg-light-sidebar`        | `#PLACEHOLDER` | Sidebar background                       |
+| Token Name           | Tailwind Key           | Value     | Tailwind Ref  | Usage                                  |
+|----------------------|------------------------|-----------|---------------|----------------------------------------|
+| `color-light-base`        | `bg-light-base`        | `#f8fafc` | slate-50      | Page background                        |
+| `color-light-surface`     | `bg-light-surface`     | `#ffffff` | white         | Card background                        |
+| `color-light-surface-alt` | `bg-light-surface-alt` | `#f1f5f9` | slate-100     | Hover / subtle background              |
+| `color-light-border`      | `border-light-border`  | `#e2e8f0` | slate-200     | Card borders, dividers                 |
+| `color-light-primary`     | `text-light-primary`   | `#0f172a` | slate-900     | Headings, key values                   |
+| `color-light-secondary`   | `text-light-secondary` | `#475569` | slate-600     | Labels, descriptions                   |
+| `color-light-muted`       | `text-light-muted`     | `#94a3b8` | slate-400     | Timestamps, disabled states            |
+| `color-light-accent`      | `bg-light-accent`      | `#f59e0b` | amber-500     | Buttons, active nav, highlights        |
+| `color-light-accent-hover`| `bg-light-accent-hover`| `#d97706` | amber-600     | Hover state for accent elements        |
+| `color-light-success`     | `text-light-success`   | `#16a34a` | green-600     | Online status, healthy readings        |
+| `color-light-warning`     | `text-light-warning`   | `#ea580c` | orange-600    | Attention required, maintenance due    |
+| `color-light-danger`      | `text-light-danger`    | `#dc2626` | red-600       | Faults, errors, critical alerts        |
+| `color-light-sidebar`     | `bg-light-sidebar`     | `#ffffff` | white         | Sidebar background                     |
 
 ### 2.2 Dark Mode
 
-| Token Name              | Tailwind Key              | Placeholder | Usage                                      |
-|-------------------------|---------------------------|-------------|--------------------------------------------|
-| `color-bg-base`         | `dark:bg-dark-base`       | `#PLACEHOLDER` | Page background                          |
-| `color-bg-surface`      | `dark:bg-dark-surface`    | `#PLACEHOLDER` | Card background                          |
-| `color-bg-surface-alt`  | `dark:bg-dark-surface-alt`| `#PLACEHOLDER` | Alternate/hover card background          |
-| `color-border`          | `dark:border-dark-border` | `#PLACEHOLDER` | Card borders, dividers                   |
-| `color-text-primary`    | `dark:text-dark-primary`  | `#PLACEHOLDER` | Headings, key values                     |
-| `color-text-secondary`  | `dark:text-dark-secondary`| `#PLACEHOLDER` | Labels, descriptions, meta info          |
-| `color-text-muted`      | `dark:text-dark-muted`    | `#PLACEHOLDER` | Timestamps, disabled states              |
-| `color-accent`          | `dark:bg-dark-accent`     | `#PLACEHOLDER` | Primary buttons, active nav items, highlights |
-| `color-accent-hover`    | `dark:bg-dark-accent-hover`| `#PLACEHOLDER` | Hover state for accent elements         |
-| `color-success`         | `dark:text-dark-success`  | `#PLACEHOLDER` | Online status, healthy readings          |
-| `color-warning`         | `dark:text-dark-warning`  | `#PLACEHOLDER` | Low battery, maintenance due             |
-| `color-danger`          | `dark:text-dark-danger`   | `#PLACEHOLDER` | Faults, errors, critical alerts          |
-| `color-sidebar-bg`      | `dark:bg-dark-sidebar`    | `#PLACEHOLDER` | Sidebar background                       |
+| Token Name           | Tailwind Key                | Value     | Tailwind Ref  | Usage                                  |
+|----------------------|-----------------------------|-----------|---------------|----------------------------------------|
+| `color-dark-base`         | `dark:bg-dark-base`         | `#09090b` | zinc-950      | Page background                        |
+| `color-dark-surface`      | `dark:bg-dark-surface`      | `#18181b` | zinc-900      | Card background                        |
+| `color-dark-surface-alt`  | `dark:bg-dark-surface-alt`  | `#27272a` | zinc-800      | Hover / subtle background              |
+| `color-dark-border`       | `dark:border-dark-border`   | `#27272a` | zinc-800      | Card borders, dividers                 |
+| `color-dark-primary`      | `dark:text-dark-primary`    | `#fafafa` | zinc-50       | Headings, key values                   |
+| `color-dark-secondary`    | `dark:text-dark-secondary`  | `#a1a1aa` | zinc-400      | Labels, descriptions                   |
+| `color-dark-muted`        | `dark:text-dark-muted`      | `#52525b` | zinc-600      | Timestamps, disabled states            |
+| `color-dark-accent`       | `dark:bg-dark-accent`       | `#fbbf24` | amber-400     | Buttons, active nav, highlights        |
+| `color-dark-accent-hover` | `dark:bg-dark-accent-hover` | `#f59e0b` | amber-500     | Hover state for accent elements        |
+| `color-dark-success`      | `dark:text-dark-success`    | `#4ade80` | green-400     | Online status, healthy readings        |
+| `color-dark-warning`      | `dark:text-dark-warning`    | `#fb923c` | orange-400    | Attention required, maintenance due    |
+| `color-dark-danger`       | `dark:text-dark-danger`     | `#f87171` | red-400       | Faults, errors, critical alerts        |
+| `color-dark-sidebar`      | `dark:bg-dark-sidebar`      | `#18181b` | zinc-900      | Sidebar background                     |
 
 ---
 
@@ -124,7 +124,7 @@ Cards should never stretch to fill the full page width without a defined `max-w`
 All cards share the same base style. Do not deviate from this without a design discussion.
 
 ```
-rounded-2xl border p-5 shadow-sm
+border p-5 shadow-sm
 bg-light-surface dark:bg-dark-surface
 border-light-border dark:border-dark-border
 ```
