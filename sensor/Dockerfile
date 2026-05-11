@@ -5,4 +5,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ingest.py ./
 # CSV backup volume — mount /var/log/hyperion on the host to persist
 VOLUME ["/var/log/hyperion"]
+ENV PYTHONUNBUFFERED=1
 CMD ["python", "ingest.py"]
