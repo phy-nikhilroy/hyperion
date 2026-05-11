@@ -8,7 +8,8 @@ const KEY_PEAK     = 'telemetry:today:peak'
 const KEY_PEAK_AT  = 'telemetry:today:peakAt'
 
 export const ingest = async (req, res) => {
-  const { deviceId, outputW, timestamp, secret } = req.body
+  const secret = req.headers['x-ingest-secret'] || req.body.secret
+  const { deviceId, outputW, timestamp } = req.body
 
   if (secret !== process.env.INGEST_SECRET)
     return res.status(401).json({ message: 'Unauthorized' })
